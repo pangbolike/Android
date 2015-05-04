@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
+
 public class MyActivity extends Activity implements ActivityCallBack,Handler.Callback{
     /**
      * Called when the activity is first created.
