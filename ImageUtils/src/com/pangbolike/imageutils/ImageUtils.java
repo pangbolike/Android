@@ -19,7 +19,7 @@ public class ImageUtils {
 
 
     /**
-     *
+     * 取bitmap中心的圆形区域
      * @param bitmap
      * @param config 可为空，此时使用ARGB_8888
      * @return
