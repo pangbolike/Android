@@ -83,7 +83,7 @@ public class ImageUtils {
      */
     public Bitmap decodeFile(String file){
         try{
-            return BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(file)));
+            return BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(file), 8192));
         }catch (Exception e){
             e.printStackTrace();
         }
