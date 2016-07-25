@@ -81,12 +81,39 @@ public class ImageUtils {
      * @param file
      * @return
      */
-    public Bitmap decodeFile(String file){
+    public static Bitmap decodeFile(String file){
         try{
             return BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(file), 8192));
         }catch (Exception e){
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 替换bitmap中非透明像素的颜色为color
+     * 会创建一个可变更的新bitmap返回
+     * @param bitmap
+     * @param color
+     * @return
+     */
+    public static Bitmap replaceContentColor(Bitmap bitmap, int color){
+        if (null != bitmap){
+            bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+            if (null != bitmap){
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                for (int i = 0 ; i < width ; i++){
+                    for (int j = 0; j < height ; j++){
+                        int trans = (bitmap.getPixel(i, j) & 0xff000000);
+                        if (trans != 0){
+                            //保留原有透明度，不然内容区域看上去会变胖
+                            bitmap.setPixel(i, j, (color & 0x00ffffff) | trans);
+                        }
+                    }
+                }
+            }
+        }
+        return bitmap;
     }
 }
