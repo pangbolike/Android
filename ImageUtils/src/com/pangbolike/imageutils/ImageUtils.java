@@ -93,6 +93,7 @@ public class ImageUtils {
     /**
      * 替换bitmap中非透明像素的颜色为color
      * 会创建一个可变更的新bitmap返回
+     * 另外耗时操作建议在非ui线程处理
      * @param bitmap
      * @param color
      * @return
